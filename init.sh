@@ -13,4 +13,4 @@ ln -s $DONFIG_DIR/bashrc ~/.bashrc
 ln -s $DONFIG_DIR/bash_aliases ~/.bash_aliases
 ln -s $DONFIG_DIR/vim ~/.vim
 
-source ~/.bashrc
+git submodule update --init

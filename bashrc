@@ -17,8 +17,8 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-if [ -f ~/.bash_specific ]; then
-    . ~/.bash_specific
+if [ -f ~/.bashrc_specific ]; then
+    . ~/.bashrc_specific
 fi
 
 # enable programmable completion features (you don't need to enable
