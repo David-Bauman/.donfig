@@ -1,0 +1,96 @@
+set nocompatible " Don't worry about backwards compatibility w/ Vi
+set backspace=indent,eol,start " backspace can delete auto-indents, newline chars, and stuff not typed this session
+set number relativenumber " Line numbers on the side
+set nowrap " Don't wrap long lines
+set splitbelow " :vsplit new pane opens below
+set splitright " :split new pane opens right 
+set t_Co=256 " proper colors
+set ignorecase " make searches case-insensitive...
+set smartcase " ...unless they contain upper-case letters
+set tabstop=2 expandtab shiftwidth=2
+
+syntax on " syntax highlighting
+
+
+" mapleader=<leader> in map commands, maplocalleader=<localleader>
+let mapleader = ","
+let maplocalleader = "\\"
+
+" Change escape to jk 
+inoremap jk <esc>
+
+" Disable arrow keys and escape
+noremap <Up> <nop>
+noremap <Down> <nop>
+noremap <Left> <nop>
+noremap <Right> <nop>
+inoremap <esc> <nop>
+
+" delete line
+inoremap <leader><c-d> <esc>ddi
+
+" uppercase current word
+inoremap <leader><c-u> <esc>viwUi
+nnoremap <leader><c-u> viwU
+
+" lowercase current word
+inoremap <leader><c-l> <esc>viwui
+nnoremap <leader><c-l> viwu
+
+" open vimrc
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+" source vimrc
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
+" enclose current word in quotes (double or single)
+nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
+nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
+inoremap <leader>" <esc>viw<esc>a"<esc>bi"<esc>lel<Right>i
+inoremap <leader>' <esc>viw<esc>a'<esc>bi'<esc>lel<Right>i
+vnoremap <leader>" <esc>v`<<esc>i"<esc>v`><esc>a"<esc>
+vnoremap <leader>' <esc>v`<<esc>i'<esc>v`><esc>a'<esc>
+
+" Split navigation
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+augroup iff_abbrevs
+  autocmd!
+  autocmd Filetype python :iabbrev <buffer> iff if :<Left>
+  autocmd Filetype javascript,c,cpp,java :iabbrev <buffer> iff if ()<Left>
+augroup END
+
+""" NerdTree stuff
+augroup nerdtree
+  autocmd!
+  autocmd StdinReadPre * let s:std_in=1
+  " open NerdTree if vim opened without a file specified
+  autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+  " open NerdTree if vim opened w/ directory
+  autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+augroup END
+noremap <leader>nt <esc>:NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
+
+""" vim-airline
+let g:airline_theme='distinguished'
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline#extensions#tabline#enabled = 1
+
+""" vim-colorscheme
+set background=dark
+colorscheme gruvbox 
+
+""" vim-fzf
+noremap <leader>f <esc>:Files<cr>
+
+""" vim-commentary
+augroup commentary
+  autocmd!
+  autocmd FileType sh setlocal commentstring=#\ %s
+augroup END
+
+""" vim-rainbow
+let g:rainbow_active = 1
