@@ -49,6 +49,9 @@ inoremap <leader>' <esc>viw<esc>a'<esc>bi'<esc>lel<Right>i
 vnoremap <leader>" <esc>v`<<esc>i"<esc>v`><esc>a"<esc>
 vnoremap <leader>' <esc>v`<<esc>i'<esc>v`><esc>a'<esc>
 
+" write file
+inoremap <leader>w <esc>:w<CR>
+
 " Split navigation
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
