@@ -40,6 +40,7 @@ export EDITOR='vi -e'
 export VISUAL='vim'
 export BROWSER='firefox'
 export PAGER='less'
+export LESS="$LESS -R -Q"
 
 # only owner can read/write new files
 umask 077

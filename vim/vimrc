@@ -1,4 +1,5 @@
 set nocompatible " Don't worry about backwards compatibility w/ Vi
+set visualbell " visual flash instead of annoying chime noise
 set backspace=indent,eol,start " backspace can delete auto-indents, newline chars, and stuff not typed this session
 set number relativenumber " Line numbers on the side
 set nowrap " Don't wrap long lines
@@ -7,7 +8,7 @@ set splitright " :split new pane opens right
 set t_Co=256 " proper colors
 set ignorecase " make searches case-insensitive...
 set smartcase " ...unless they contain upper-case letters
-set tabstop=2 expandtab shiftwidth=2
+set tabstop=2 expandtab shiftwidth=2 autoindent " indentation
 syntax on " syntax highlighting
 
 " mapleader=<leader> in map commands, maplocalleader=<localleader>
@@ -88,6 +89,7 @@ noremap <leader>f <esc>:Files<cr>
 augroup commentary
   autocmd!
   autocmd FileType sh setlocal commentstring=#\ %s
+  autocmd FileType vim setlocal commentstring=\"\ %s
 augroup END
 
 """ vim-rainbow
