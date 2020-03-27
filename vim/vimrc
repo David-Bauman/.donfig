@@ -9,6 +9,14 @@ set t_Co=256 " proper colors
 set ignorecase " make searches case-insensitive...
 set smartcase " ...unless they contain upper-case letters
 set tabstop=2 expandtab shiftwidth=2 autoindent " indentation
+set hlsearch " search highlighting
+set incsearch " incremental search highlighting
+set scrolloff=7 " keep at least 7 lines above and below cursor when scrolling
+set nobackup nowritebackup noswapfile " do not keep annoying swap/back files
+if v:version >= 730
+  set undofile " keep a persistent backup file
+  set undodir=~/.vim/.undo,~/tmp,/tmp
+endif
 syntax on " syntax highlighting
 
 " mapleader=<leader> in map commands, maplocalleader=<localleader>
@@ -17,6 +25,9 @@ let maplocalleader = "\\"
 
 " Change escape to jk 
 inoremap jk <esc>
+
+" Never use ; anyway so don't have to hit shift anymore
+nnoremap ; :
 
 " Disable arrow keys and escape
 noremap <Up> <nop>
@@ -50,13 +61,28 @@ vnoremap <leader>" <esc>v`<<esc>i"<esc>v`><esc>a"<esc>
 vnoremap <leader>' <esc>v`<<esc>i'<esc>v`><esc>a'<esc>
 
 " write file
-inoremap <leader>w <esc>:w<CR>
+inoremap <leader>w <esc>:w<CR>i
+nnoremap <leader>w :w<CR>
 
 " Split navigation
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+" Turn off search highlights
+nnoremap <leader><space> :noh<CR>
+
+" Bash controls for lines
+noremap <C-A> <Home>
+noremap <C-E> <End>
+
+" open/close tabs w/ normal syntax
+noremap <leader><C-T> <esc>:tabnew<CR>
+noremap <leader><C-W> <esc>:tabclose<CR>
+
+" Switch CWD to the directory of the open buffer
+noremap <leader>cd :cd %:p:h<cr>:pwd<cr>
 
 augroup iff_abbrevs
   autocmd!
@@ -78,8 +104,8 @@ let NERDTreeShowHidden=1
 
 """ vim-airline
 let g:airline_theme='distinguished'
-let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 
 """ vim-colorscheme
 set background=dark
