@@ -71,7 +71,7 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 " Turn off search highlights
-nnoremap <leader><space> :noh<CR>
+nnoremap <leader><space> :nohlsearch<CR>
 
 " Bash controls for lines
 noremap <C-A> <Home>
@@ -117,7 +117,7 @@ noremap <leader>f <esc>:Files<cr>
 """ vim-commentary
 augroup commentary
   autocmd!
-  autocmd FileType sh setlocal commentstring=#\ %s
+  autocmd FileType sh,tmux setlocal commentstring=#\ %s
   autocmd FileType vim setlocal commentstring=\"\ %s
 augroup END
 

@@ -39,7 +39,7 @@ PS2='more> '
 export EDITOR='vi -e'
 export VISUAL='vim'
 export BROWSER='firefox'
-if command -v most > /dev/null 2>&1l then
+if command -v most > /dev/null 2>&1; then
   export PAGER='most'
 else
   export PAGER='less'
