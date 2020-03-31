@@ -39,7 +39,11 @@ PS2='more> '
 export EDITOR='vi -e'
 export VISUAL='vim'
 export BROWSER='firefox'
-export PAGER='less'
+if command -v most > /dev/null 2>&1l then
+  export PAGER='most'
+else
+  export PAGER='less'
+fi 
 export LESS="$LESS -R -Q"
 
 # only owner can read/write new files
