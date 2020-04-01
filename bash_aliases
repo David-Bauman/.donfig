@@ -10,4 +10,4 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 alias valgrind='valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes'
-alias tmux='tmux -2'
+alias tmux='tmux -2 -f ~/.tmux/tmux.conf'

@@ -9,10 +9,11 @@ mv ~/.bash_aliases $OLD_CONFIG_DIR
 mv ~/.vim $OLD_CONFIG_DIR
 mv ~/.vimrc $OLD_CONFIG_DIR
 mv ~/.tmux.conf $OLD_CONFIG_DIR
+mv ~/.tmux $OLD_CONFIG_DIR
 
 ln -s $DONFIG_DIR/bashrc ~/.bashrc
 ln -s $DONFIG_DIR/bash_aliases ~/.bash_aliases
 ln -s $DONFIG_DIR/vim ~/.vim
-ln -s $DONFIG_DIR/tmux.conf ~/.tmux.conf
+ln -s $DONFIG_DIR/tmux ~/.tmux
 
 git submodule update --init
