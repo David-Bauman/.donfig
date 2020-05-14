@@ -48,3 +48,4 @@ export LESS="$LESS -R -Q"
 
 # only owner can read/write new files
 umask 077
+
